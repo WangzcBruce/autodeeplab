@@ -1,9 +1,10 @@
-from dataloaders.datasets import cityscapes, kd, coco, combine_dbs, pascal, sbd
+from dataloaders.datasets import cityscapes#, kd, coco, combine_dbs, pascal, sbd
 from torch.utils.data import DataLoader
 import torch.utils.data.distributed
 
 
 def make_data_loader(args, **kwargs):
+    args.dist = False
     if args.dist:
         print("=> Using Distribued Sampler")
         if args.dataset == 'cityscapes':
